@@ -2,8 +2,6 @@ from tkinter import *
 from tkinter import ttk
 import wplay_child
 
-#formula blocks
-
 #Main application Window    
 class w_main:
     def __init__(self, root):

@@ -4,12 +4,11 @@ import main
 class child_window():
 
     def __init__(self, root, *args):
-        self.root = main.menu_root.root
+        self.root = root
         decision = int(*args)
         option = { 0 : self.playwin_open,
                    1 : self.w_tonetune_open}
         option[decision]()
-
 
     def playwin_open(self):
             
