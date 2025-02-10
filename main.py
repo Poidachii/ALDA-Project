@@ -14,6 +14,7 @@ class w_main:
 
     
     def main(self):
+
         #Style Themes
         s = ttk.Style()
         s.theme_use('clam')
@@ -47,8 +48,7 @@ class w_main:
     def createwin(self, *args):
 
         try:
-            child_app = wplay_child.child_window(self.root)
-            return wplay_child.child_window(*args)
+            return wplay_child.child_window(self.root, *args)
         
         except ValueError:
             pass
