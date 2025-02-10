@@ -3,50 +3,64 @@ from tkinter import ttk
 import wplay_child
 
 #formula blocks
-def createwin(*args):
-
-    try:
-        wplay_child.child_window(*args)
-
-    except ValueError:
-        pass
 
 #Main application Window    
+class w_main:
+    def __init__(self, root):
 
-root = Tk()
-root.title("ALDA: Assistive Learning Device Attachment for Guitars")
-root.resizable(width=False,height=False)
-root.geometry('750x600') #rough estimated resolution 
+        self.root = root
+        self.root.title("ALDA: Assistive Learning Device Attachment for Guitars")
+        self.root.resizable(width=False,height=False)
+        self.root.geometry('750x600') #rough estimated resolution 
+        self.main()
 
-#Style Themes
-s = ttk.Style()
-s.theme_use('clam')
+    
+    def main(self):
+        #Style Themes
+        s = ttk.Style()
+        s.theme_use('clam')
 
-#Content (the whole window inside the parent one)
-content = ttk.Frame(root, padding="2 2 2 2")
-content.grid(row=0,column=0)
-content.pack(expand=True)
-content.rowconfigure(0, weight=1)
-content.columnconfigure(0,weight=1)
+        #Content (the whole window inside the parent one)
+        content = ttk.Frame(self.root, padding="2 2 2 2")
+        content.grid(row=0,column=0)
+        content.pack(expand=True)
+        content.rowconfigure(0, weight=1)
+        content.columnconfigure(0,weight=1)
 
-#Frame (sub-window inside the content)
-mainframe = ttk.Frame(content, padding="2 2 2 2", width=200,height=400)
-#Entry Widgets(Where the user can type on or display results)
+        #Frame (sub-window inside the content)
+        mainframe = ttk.Frame(content, padding="2 2 2 2", width=200,height=400)
+        #Entry Widgets(Where the user can type on or display results)
 
-#Labels
-ttk.Label(mainframe, text="ALDA-G").grid(column=2,row=1,sticky=N)
+        #Labels
+        ttk.Label(mainframe, text="ALDA-G").grid(column=2,row=1,sticky=N)
 
-#Buttons
-play_button = ttk.Button(mainframe, text="Play", command=lambda: createwin(*args)).grid(column=2, row=3,sticky=S)
-tt_button = ttk.Button(mainframe, text="Tone Tuning").grid(column=2,row=4)
-set_button = ttk.Button(mainframe, text="Settings").grid(column=2,row=5)
-exit_button = ttk.Button(mainframe, text="Exit").grid(column=2,row=6)
+        #Buttons
+        play_button = ttk.Button(mainframe, text="Play", command=lambda: self.createwin("0")).grid(column=2, row=3,sticky=S)
+        tt_button = ttk.Button(mainframe, text="Tone Tuning").grid(column=2,row=4)
+        set_button = ttk.Button(mainframe, text="Settings").grid(column=2,row=5)
+        exit_button = ttk.Button(mainframe, text="Exit").grid(column=2,row=6)
 
-#polishing for widget distancing
-for child in content.winfo_children(): 
-    child.grid_configure(padx=5, pady=5)
+        #polishing for widget distancing
+        for child in content.winfo_children(): 
+            child.grid_configure(padx=5, pady=5)
 
-root.bind("<Return>", createwin)
+        self.root.bind("<Return>", self.createwin)
+
+    def createwin(self, *args):
+
+        try:
+            child_app = wplay_child.child_window(self.root)
+            return wplay_child.child_window(*args)
+        
+        except ValueError:
+            pass
+
+
+def menu_root():
+    root = Tk()
+    mainwin = w_main(root)
+    root.mainloop()
 
 #event loop 
-root.mainloop()
+if __name__ == "__main__":
+    menu_root()
