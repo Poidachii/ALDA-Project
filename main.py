@@ -35,9 +35,9 @@ class w_main:
 
         #Buttons
         play_button = ttk.Button(mainframe, text="Play", command=lambda: self.createwin("0")).grid(column=2, row=3,sticky=S)
-        tt_button = ttk.Button(mainframe, text="Tone Tuning").grid(column=2,row=4)
-        set_button = ttk.Button(mainframe, text="Settings").grid(column=2,row=5)
-        exit_button = ttk.Button(mainframe, text="Exit").grid(column=2,row=6)
+        tt_button = ttk.Button(mainframe, text="Tone Tuning",command=lambda: self.createwin("1")).grid(column=2,row=4)
+        set_button = ttk.Button(mainframe, text="Settings",command=lambda: self.createwin("2")).grid(column=2,row=5)
+        exit_button = ttk.Button(mainframe, text="Exit", command=lambda: self.createwin("3")).grid(column=2,row=6)
 
         #polishing for widget distancing
         for child in content.winfo_children(): 

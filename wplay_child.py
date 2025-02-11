@@ -9,7 +9,9 @@ class child_window():
         decision = int(*args)
 
         option = { 0 : self.playwin_open,
-                   1 : self.w_tonetune_open}
+                   1 : self.w_tonetune_open,
+                   2 : self.w_set_open,
+                   3 : self.w_exit}
         
         option[decision]()
 
@@ -24,7 +26,13 @@ class child_window():
 
             self.root.deiconify()
             self.w_tonetune.destroy()
+    
+    def w_set_close(self):
+          self.w_set = self.w_set_open
 
+          self.root.deiconify()
+          self.w_set.destroy()
+          
     def playwin_open(self):
             self.root.withdraw()
             
