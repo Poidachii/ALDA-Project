@@ -46,12 +46,15 @@ class w_main:
         self.root.bind("<Return>", self.createwin)
 
     def createwin(self, *args):
-
         try:
-            return wplay_child.child_window(self.root, *args)
+            w_index_list = list(args)
+            decision = int(w_index_list[0])
+            w_index_list.pop
+
+            return wplay_child.child_window(self.root, decision)
         
         except ValueError:
-            pass
+            print("Something Wrong with the passage of values in Line 54, in main.py...")
 
 
 def menu_root():
