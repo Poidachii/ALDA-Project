@@ -12,7 +12,6 @@ class w_main:
         self.root.geometry('750x600') #rough estimated resolution 
         self.main()
 
-    
     def main(self):
 
         #Style Themes
@@ -43,7 +42,7 @@ class w_main:
         for child in content.winfo_children(): 
             child.grid_configure(padx=5, pady=5)
 
-        self.root.bind("<Return>", self.createwin)
+       # self.root.bind("<Return>", self.createwin)
 
     def createwin(self, *args):
         try:
